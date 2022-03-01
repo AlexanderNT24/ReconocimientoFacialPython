@@ -1,10 +1,12 @@
 import cv2
 import os
-import pafy
 
 class ReconocerRostros:
     def __init__(self,entrada,url,urlIP):
-        ruta='D:\SistemaCamarasPython\Datos'
+        absPath = os.path.abspath(__file__)
+
+        path, nombreArchivo = os.path.split(absPath)
+        ruta=path+'\Datos'
         personas=os.listdir(ruta)
         face_recognizer=cv2.face.EigenFaceRecognizer_create()
         print(personas)
@@ -15,16 +17,10 @@ class ReconocerRostros:
          captura =cv2.VideoCapture(1)
         if entrada=="2":
          captura =cv2.VideoCapture(0)
-        if entrada=="3":
-         video=pafy.new(url)
-         best=video.getbest(preftype="mp4")
-         captura =cv2.VideoCapture()
-         captura.open(best.url)
         if entrada=="4":
          captura =cv2.VideoCapture(urlIP)
 
-        faceClassif=cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-        faceClassif.load('C:/opencv/sources/data/haarcascades/haarcascade_frontalface_default.xml')
+        faceClassif=cv2.CascadeClassifier(cv2.data.haarcascades +'haarcascade_frontalface_default.xml')
 
         while True:
          ret, frame=captura.read()

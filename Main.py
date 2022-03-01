@@ -9,6 +9,12 @@ import CapturarRostros
 import EntrenandoReconocedor
 import ReconocimientoFacial
 
+import os
+
+absPath = os.path.abspath(__file__)
+
+path, nombreArchivo = os.path.split(absPath)
+
 ventana=Tk()
 ventana.geometry("800x500")
 ventana.title("Reconocimiento")
@@ -53,9 +59,9 @@ def mostrarCajaTextoURLIP():
     cajaTextoURL.place_forget()
     cajaTextoURLIP.place(x=300, y=220)
 
-imagenCapturar=PhotoImage(file=".\Imagenes\Camara.png")
-imagenEntrenar=PhotoImage(file=".\Imagenes\Entrenar.png")
-imagenReconocer=PhotoImage(file=".\Imagenes\Video.png")
+imagenCapturar=PhotoImage(file=path+"\Imagenes\Camara.png")
+imagenEntrenar=PhotoImage(file=path+"\Imagenes\Entrenar.png")
+imagenReconocer=PhotoImage(file=path+"\Imagenes\Video.png")
 
 cajaTextoURL =Text(ventana,width=20,height=1)
 cajaTextoURLIP =Text(ventana,width=20,height=1)

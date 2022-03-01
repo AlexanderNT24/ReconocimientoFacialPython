@@ -4,7 +4,10 @@ import numpy as np
 
 class EntrenarRostros:
     def __init__(self):
-        ruta='D:\FiltrosPythonYOpenCV\ReconocimientoFacial\Datos'
+        absPath = os.path.abspath(__file__)
+
+        path, nombreArchivo = os.path.split(absPath)
+        ruta=path+'\Datos'
 
         listaPersonas=os.listdir(ruta)
 
